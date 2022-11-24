@@ -6,7 +6,6 @@ if (x > 0) 1
 	else if (x == 0) 0 else -1
 }
 
-------
 def signum(x:Int):Int = {
   x.signum
 }
@@ -65,7 +64,7 @@ Hello
 we keep on adding the elements to the stack and multiplying only on the way back.
 --------difference normal recursion vs tail recursion --------
       T
-S1 S2 S3
+lt eq gt
 ---------------------------------------------
 @tailrec
 def prodcode(x:String, p: Int = 1):Int={
@@ -245,6 +244,7 @@ def avg(arr:Array[Double]) = arr.sum/arr.length
 
 
 for(i <- arr.size-1 to 0 by -1) yield arr(i)
+-->Array(-3,-4,0,9,-2).reverse.sort
 --------------------------------------------------
 
 1,2,3,3,3,6,2
@@ -263,7 +263,7 @@ def duplicates(arr:Array[Int])={
 8. drop the first negative number
 
 2,-3,-4,6,7
-0,1,2,3,4,5
+0,1,2,3,4
 
 
 def drop(arr:Array[Int])={
@@ -341,8 +341,13 @@ s.map{case(k,v) => (k,v*0.1)}
 -------
 2.
 val in = new java.util.Scanner(new java.io.File("sample.txt"))
+
 val s = scala.collection.mutable.Map[String,Int]()
-while(in.hasNext) {val k=in.next;val v=s.getOrElse(k,0)+1; s(k)=v}
+while(in.hasNext) {                    
+	val k=in.next;
+	val v=s.getOrElse(k,0)+1;
+	s(k)=v
+}
 
 we are intializing an empty map accesing each element checking if they exists or else populating zero and updating the map each time
 3.
@@ -367,21 +372,21 @@ for ((s,n) <- t) Console.print(s+"|"+n)
 9.
 
 def minmax(values:Array[Int],v:Int)={
-	var s1 = 0
-	var s2 = 0
-	var s3 = 0
+	var lt = 0
+	var eq = 0
+	var gt = 0
 	for(i<- 0 until values.length){		
 		if(values(i)<v){
-			s1 = s1 + 1
+			lt = lt + 1
 		}
 		else if (values(i)>v){
-			s2 = s2 + 1
+			gt = gt + 1
 		}
 		else{
-			s3 = s3 + 1
+			eq = eq + 1
 		}		
 	}
-	(s1,s2,s3)
+	(lt,eq,gt)
 } 
 
 10.uses of zip
